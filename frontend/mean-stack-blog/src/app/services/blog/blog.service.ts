@@ -13,4 +13,8 @@ export class BlogService {
   getAllArticles() {
     return this.http.get(this.config.getBlogUrl() + 'getAll');
   }
+
+  getHomeArticles(index, searchValue) {
+    return this.http.get(this.config.getBlogUrl() + 'getLatest?index=' + index + '&search=' + searchValue);
+  }
 }

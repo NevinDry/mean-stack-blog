@@ -1,1 +1,58 @@
-<p>blog-list works!</p>
+
+  <div class="container">
+  
+    <div class="row">
+  
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+  
+        <h1 class="my-4">Latest Articles
+        </h1>
+  
+        <app-loading *ngIf="loading"></app-loading>
+  
+        <!-- Blog Post -->
+        <div *ngIf="!loading">
+          <div *ngFor="let article of articles" class="card mb-4">
+            <img class="card-img-top" [src]="config.getPublicImageUrl() + '/blog/' + article.imageLink"
+              alt="Card image cap">
+            <div class="author">
+              <img [src]="'../../../assets/' + article.author + '.jpg'" alt="Card author">
+  
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">{{article.title}}</h2>
+              <p class="card-text">{{article.preview}}</p>
+  
+              <a [routerLink]="['/blogArticle', article._id]" class="btn btn-primary">Read →</a>
+              <span class="text-muted float-right">Reading time : {{article.readingTime}} min</span>
+            </div>
+            <div class="card-footer text-muted">
+              Posted on {{ article.date | date:'fullDate'}} by
+              <a href="#">{{article.author}}</a>
+            </div>
+          </div>
+        </div>
+  
+  
+      </div>
+      <div class="col-md-4">
+        <!-- Search Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Search</h5>
+          <div class="card-body">
+            <div class="input-group">
+              <input type="text" #searchValue class="form-control" placeholder="...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" (click)="searchArticles(searchValue.value)" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+  
+  
+  
+    </div>
+  </div>
