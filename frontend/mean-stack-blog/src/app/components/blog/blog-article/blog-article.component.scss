@@ -1,0 +1,43 @@
+.authorMedia{
+    width: 64px;
+    height: 64px;
+    border-radius: 45px;
+}
+
+.article .socialMedias i{
+    font-size: 2.5rem;
+}
+
+.article .socialMedias .fa-facebook-square{
+    color: #4267B2
+}
+
+.article .socialMedias .fa-linkedin{
+    color:#006599;
+}
+
+.article .socialMedias .fa-twitter-square{
+    color: #1DA1F2
+}
+
+.article .socialMedias a{
+    color: inherit;
+}
+
+@media (max-width: 960px) {
+    .article .socialMedias{
+        height: inherit;
+        position: relative;
+        text-align: center;
+
+    }
+  }
+
+  @media (min-width: 960px) {
+    .article .socialMedias{
+        text-align: left;
+        height: 100px;
+        position: fixed;
+        right: 0;    
+    }
+  }

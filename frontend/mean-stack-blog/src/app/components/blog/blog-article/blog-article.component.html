@@ -1,0 +1,58 @@
+<div class="container containerMarginNavbar">
+
+    <div *ngIf="article" class="row article">
+  
+      <!-- Post Content Column -->
+      <div class="col-lg-9">
+  
+        <!-- Title -->
+        <h1 class="mt-4 text-center">{{article.title}}</h1>
+  
+  
+        <!-- Date/Time -->
+        <div class="d-flex justify-content-center mt-3">
+          <div class="media text-muted">
+            <img class="mr-3 authorMedia" [src]="'../../../assets/authors/'+ article.author +'.jpg'"
+              alt="Generic placeholder image">
+            <div class="media-body">
+              <h6 class="mt-1 mb-0">{{article.author}}</h6>
+             Posted on {{article.date  | date:'fullDate'}} · reading time : {{article.readingTime}} min 
+            </div>
+          </div>
+        </div>
+  
+        <hr>
+        <p class="lead">{{article.preview}}</p>
+  
+        <!-- Preview Image -->
+        <img class="img-fluid rounded" [src]="config.getPublicImageUrl() + '/blog/' + article.imageLink" alt="">
+  
+        <hr>
+  
+        <!-- Post content markdown -->
+        <markdown [data]="article.content"></markdown>
+  
+        <hr>
+  
+      </div>
+      <div class="col-lg-3 row socialMedias">
+        <span class="col-4 col-lg-12">
+          <!-- Facebook use page meta for his post preview -->
+          <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:4200" target="_blank"><i
+              class="fab fa-facebook-square"></i></a>
+  
+        </span>
+        <span class="col-4 col-lg-12">
+          <!-- Same as facebook i guess -->
+          <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=localhost:4200/&title=' + article.title" target="_blank"><i class="fab fa-linkedin"></i></a>
+  
+        </span>
+        <span class="col-4 col-lg-12">
+  
+          <a [href]="'https://twitter.com/share?url=localhost:4200/&text=' + article.title + ' by ' + article.author"
+            target="_blank"><i class="fab fa-twitter-square"></i></a>
+  
+        </span>
+      </div>
+    </div>
+  
