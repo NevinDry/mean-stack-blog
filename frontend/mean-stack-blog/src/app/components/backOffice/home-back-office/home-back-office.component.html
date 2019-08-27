@@ -1,1 +1,7 @@
-<p>home-back-office works!</p>
+<div class="container">
+    <h1 *ngIf="authService.user"> Yo {{authService.user.name}}</h1>
+    
+    <app-blog-list-back-office></app-blog-list-back-office>
+  
+  </div>
+  

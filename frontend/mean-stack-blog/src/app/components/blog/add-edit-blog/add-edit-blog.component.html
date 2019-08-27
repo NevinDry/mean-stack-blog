@@ -1,0 +1,97 @@
+<div class="container">
+
+    <h2 class="text-center mt-5 color-primary">{{isEdit ? 'Edit an article' : 'Add an article'}}
+    </h2>
+    <div class="row  mt-3 mb-5">
+      <div class="col-md-12 col-12 ">
+        <div>
+          <form [formGroup]="articleForm" (ngSubmit)="onSubmitArticleForm()">
+  
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputTitre">Title</label>
+                <input class="form-control" id="inputTitre" type="text" formControlName="title"
+                  [ngClass]="{ 'is-invalid': submitted && articleForm.controls.title.errors }" />
+                <div class="invalid-feedback"
+                  *ngIf="submitted && articleForm.controls.title.errors && articleForm.controls.title.errors.required">
+                  Title requis
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+  
+                <label for="inputAccroche">Lead</label>
+                <textarea class="form-control" id="inputAccroche" type="text" formControlName="preview"
+                  [ngClass]="{ 'is-invalid': submitted && articleForm.controls.preview.errors }" rows="3"></textarea>
+                <div class="invalid-feedback"
+                  *ngIf="submitted && articleForm.controls.preview.errors && articleForm.controls.preview.errors.required">
+                  Lead required
+                </div>
+  
+              </div>
+            </div>
+            <div class="form-row">
+  
+              <div class="form-group col-md-6">
+  
+                <label for="inputTime">Reading time (min)</label>
+                <input class="form-control" id="inputTime" type="text" formControlName="time"
+                  [ngClass]="{ 'is-invalid': submitted && articleForm.controls.time.errors }" />
+  
+  
+              </div>
+  
+              <div class="form-group col-md-6">
+                <label for="inputImage">Lead picture</label>
+                <input type="file" #inputImage (change)="fileChangeEvent()" class="form-control-file"
+                  formControlName="image" id="inputImage"
+                  [ngClass]="{ 'is-invalid': submitted && articleForm.controls.imageLink.errors }">
+                <div class="invalid-feedback"
+                  *ngIf="submitted && articleForm.controls.imageLink.errors && articleForm.controls.imageLink.errors.required">
+                  Picture required
+                </div>
+              </div>
+              <div *ngIf="articleForm.value.imageLink" class="col-md-6 offset-md-6">
+                <img class="uploadImagePreview"
+                  [src]="config.getPublicImageUrl() + '/blog/' + articleForm.value.imageLink" />
+              </div>
+  
+            </div>
+  
+            <div class="form-group">
+  
+              <label for="inputArticle">Content (<a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>)</label>
+              <textarea class="form-control" id="inputArticle" type="text" formControlName="content"
+                [ngClass]="{ 'is-invalid': submitted && articleForm.controls.content.errors }" rows="3"></textarea>
+              <div class="invalid-feedback"
+                *ngIf="submitted && articleForm.controls.content.errors && articleForm.controls.content.errors.required">
+                Content required
+              </div>
+  
+            </div>
+  
+            <div *ngIf="sendSuccess" class="alert alert-success">
+              <strong>Success</strong>
+            </div>
+  
+            <div *ngIf="sendError" class="alert alert-danger">
+              {{sendError}}
+            </div>
+  
+            <button *ngIf="!isEdit" type="submit" class="btn btn-primary">Add</button>
+            <button *ngIf="isEdit" type="submit" class="btn btn-primary">Edit</button>
+  
+            <button type="button" (click)="onPreview()" class="btn btn-secondary float-right">Preview</button>
+          </form>
+  
+        </div>
+  
+  
+      </div>
+  
+      <div *ngIf="preview" class="col-12">
+        <app-blog-article [articleFromPreview]="preview"></app-blog-article>
+      </div>
+    </div>
+  
+  </div>
+  

@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-/server/backend/angular
+/media/uploads/blog/*
 # IDEs and editors
 /.idea
 .project

@@ -13,6 +13,8 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { HomeBackOfficeComponent } from './components/backOffice/home-back-office/home-back-office.component';
 import { AuthIntercepter } from './services/auth/auth-intercepter';
+import { BlogListBackofficeComponent } from './components/blog/blog-list-back-office/blog-list-back-office.component';
+import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-blog.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { AuthIntercepter } from './services/auth/auth-intercepter';
     LoadingComponent,
     BlogArticleComponent,
     AuthComponent,
-    HomeBackOfficeComponent
+    HomeBackOfficeComponent,
+    BlogListBackofficeComponent,
+    AddEditBlogComponent
   ],
   imports: [
     BrowserModule,

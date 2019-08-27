@@ -1,0 +1,43 @@
+<div class="">
+
+    <a class="btn btn-primary mt-5" [routerLink]="['/addEditArticle']">
+      Add an article
+    </a>
+    <div *ngIf="error" class="alert alert-danger">
+      {{error}}
+    </div>
+  
+    <div class="mt-1">
+      <app-loading *ngIf="loading"></app-loading>
+  
+      <table *ngIf="!loading" class="table articleListBackTable table-hover table-responsive">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>date</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let article of articles">
+            <td id="f1">{{article.title}}</td>
+            <td id="l1">{{article.author}}</td>
+            <td id="m1">{{article.date | date:'dd/MM/yyyy'}}</td>
+            <td><button type="button" class="update btn btn-warning btn-sm" [routerLink]="['/addEditArticle', article._id]"><i class="fas fa-edit"></i></button></td>
+            <td><button (click)="deleteArticle(article._id)" type="button" class="delete btn btn-danger btn-sm"><i
+                  class="fas fa-trash-alt"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- <p-confirmDialog #cd class="confirmDialog">
+      <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="Non, lol" (click)="cd.reject()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Oui" (click)="cd.accept()"></button>
+      </p-footer>
+    </p-confirmDialog> -->
+  
+  </div>
+  

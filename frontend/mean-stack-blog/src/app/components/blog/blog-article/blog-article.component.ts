@@ -18,8 +18,7 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
   private unsubscribe: Subject<void> = new Subject();
   loading: boolean;
   error: boolean;
-  private config = new Config();
-
+  config = new Config();
 
   @Input('articleFromPreview')
   set articleFromPreview(value: Article) {

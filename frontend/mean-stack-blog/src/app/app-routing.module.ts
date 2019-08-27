@@ -5,6 +5,7 @@ import { BlogArticleComponent } from './components/blog/blog-article/blog-articl
 import { AuthComponent } from './components/auth/auth/auth.component';
 import { HomeBackOfficeComponent } from './components/backOffice/home-back-office/home-back-office.component';
 import { AuthGuard } from './services/auth/auth.guard';
+import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-blog.component';
 
 const routes: Routes = [
   { path: '', component: BlogListComponent },
@@ -14,7 +15,17 @@ const routes: Routes = [
     path: 'backOffice', component: HomeBackOfficeComponent, canActivate: [
       AuthGuard
     ]
-  }
+  },
+  {
+    path: 'addEditArticle', component: AddEditBlogComponent, canActivate: [
+      AuthGuard
+    ]
+  },
+  {
+    path: 'addEditArticle/:id', component: AddEditBlogComponent, canActivate: [
+      AuthGuard
+    ]
+  },
 ];
 
 @NgModule({

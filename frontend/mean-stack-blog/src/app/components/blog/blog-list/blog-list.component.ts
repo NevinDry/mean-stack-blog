@@ -13,13 +13,13 @@ import { DOCUMENT } from '@angular/common';
 export class BlogListComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<void> = new Subject();
-  private articles: any[] = [];
-  private loading: boolean;
-  private fetchingOlder: boolean;
-  private error: boolean;
-  private pageIndex = 0;
-  private searchValue = "";
-  private config = new Config();
+  articles: any[] = [];
+  loading: boolean;
+  fetchingOlder: boolean;
+  error: boolean;
+  pageIndex = 0;
+  searchValue = "";
+  config = new Config();
 
   constructor(private blogService: BlogService, @Inject(DOCUMENT) private document) { }
 
