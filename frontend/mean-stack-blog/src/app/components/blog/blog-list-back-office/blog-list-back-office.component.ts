@@ -1,7 +1,8 @@
 import { takeUntil } from 'rxjs/operators';
 import { BlogService } from './../../../services/blog/blog.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
 import { Subject } from 'rxjs';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-blog-list-back-office',
@@ -11,14 +12,16 @@ import { Subject } from 'rxjs';
 export class BlogListBackofficeComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<void> = new Subject();
-
+  modalRef: BsModalRef;
   articles: any[] = [];
+  deleteId: string;
   loading: boolean;
   error: boolean;
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private modalService: BsModalService) { }
 
   ngOnInit() {
+    this.loading = true;
     this.blogService.getAllArticles()
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(
@@ -35,34 +38,37 @@ export class BlogListBackofficeComponent implements OnInit, OnDestroy {
       );
   }
 
-  deleteArticle(id) {
-    // this.confirmService.confirm({
-    //   message: "T'es sur tu veux delete gros?",
-    //   header: 'Suppression',
-    //   icon: 'pi pi-info-circle',
-    //   acceptLabel: 'Oui',
-    //   rejectLabel: 'Non lol',
-    //   accept: () => {
-    //     this.blogService.deleteArticleById(id)
-    //       .pipe(takeUntil(this.unsubscribe))
-    //       .subscribe(
-    //         (response: any) => {
-    //           this.loading = false;
-    //           var index = this.articles.findIndex(x => x._id === id);
-    //           if (index > -1) {
-    //             this.articles.splice(index, 1);
-    //           }
-    //         },
-    //         err => {
-    //           this.error = err.error.message;;
-    //           this.loading = false;
-    //         }
-    //       );
-    //   },
-    //   reject: () => {
-    //     console.log("rejected");
-    //   }
-    // });
+  openModal(template: TemplateRef<any>, id) {
+    this.deleteId = id;
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+
+  accept() {
+    this.loading = true;
+    this.blogService.deleteArticleById(this.deleteId)
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe(
+        (response: any) => {
+          this.loading = false;
+          this.modalRef.hide();
+
+          var index = this.articles.findIndex(x => x._id === this.deleteId);
+          if (index > -1) {
+            this.articles.splice(index, 1);
+          }
+          this.deleteId = null;
+        },
+        err => {
+          this.error = err.error.message;;
+          this.loading = false;
+          this.modalRef.hide();
+        }
+      );
+  }
+
+  reject(): void {
+    this.deleteId = null;
+    this.modalRef.hide();
   }
 
   ngOnDestroy() {

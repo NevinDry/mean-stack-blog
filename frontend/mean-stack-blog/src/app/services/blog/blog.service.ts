@@ -20,11 +20,11 @@ export class BlogService {
     return this.http.get(this.config.getBlogUrl() + 'getLatest?index=' + index + '&search=' + searchValue);
   }
 
-  getArticleById(id: number) {
+  getArticleById(id: string) {
     return this.http.get(this.config.getBlogUrl() + 'getOne/' + id);
   }
 
-  deleteArticleById(id: number) {
+  deleteArticleById(id: string) {
     return this.http.delete(this.config.getBlogUrl() + 'article/' + id);
   }
 

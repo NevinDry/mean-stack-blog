@@ -15,6 +15,7 @@ import { HomeBackOfficeComponent } from './components/backOffice/home-back-offic
 import { AuthIntercepter } from './services/auth/auth-intercepter';
 import { BlogListBackofficeComponent } from './components/blog/blog-list-back-office/blog-list-back-office.component';
 import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-blog.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-b
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true },
   ],
