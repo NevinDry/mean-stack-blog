@@ -35,6 +35,7 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
             (response: any) => {
               this.loading = false;
               this.article = response.data;
+              this.article.comments.sort(function(a,b){return new Date(b.date).getTime() - new Date(a.date).getTime()});
             },
             err => {
               this.error = true;

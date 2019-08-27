@@ -11,6 +11,7 @@ router.get('/getOne/:id', blogController.getOne);
 
 router.post('/addArticle', blogController.addArticle);
 router.post('/editArticle/:id', blogController.editArticle);
+router.post('/addComment/:id', blogController.addComment);
 
 router.delete('/article/:id', blogController.deleteArticle);
 

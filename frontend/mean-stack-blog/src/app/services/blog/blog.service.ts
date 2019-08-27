@@ -49,4 +49,15 @@ export class BlogService {
         })
       );
   }
+
+  addComment(comment: any, id: any) {
+    return this.http.post<{}>(`${this.config.getBlogUrl()}` + 'addComment/' + id, comment)
+      .pipe(
+        catchError(error => throwError(error)),
+        map((response: any) => {
+          console.log(response);
+          return response;
+        })
+      );
+  }
 }

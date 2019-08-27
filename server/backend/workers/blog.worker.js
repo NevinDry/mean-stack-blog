@@ -68,6 +68,37 @@ module.exports.getOne = function (id) {
             }
             resolve(doc);
         });
+
+        // agregate to sort comments backend
+        // collection.aggregate([{
+        //         '$match': {
+        //             '_id': new ObjectID(id)
+        //         }
+        //     },
+        //     {
+        //         $unwind: '$comments'
+        //     },
+        //     {
+        //         '$sort': {
+        //             'comments.date': -1
+        //         }
+        //     },
+        //     {
+        //         $group: {
+        //             _id: '$_id',
+        //             'comments': {
+        //                 $push: '$comments'
+        //             }
+        //         }
+        //     }
+        // ]).toArray(function (err, docs) {
+        //     if (err) {
+        //         reject(err);
+        //     }
+        //     console.log(docs[0]);
+        //     resolve(docs[0]);
+        // });
+
     })
 };
 
@@ -108,6 +139,31 @@ module.exports.addArticle = function (req, res) {
             if (err) reject(err);
             resolve(res.insertedId);
         });
+    });
+};
+
+module.exports.addComment = function (req, res) {
+    return new Promise(function (resolve, reject) {
+        var collection = db.get().collection('articles');
+
+        const comment = {
+            author: req.body.author || 'Anonymous',
+            comment: req.body.comment,
+            date: new Date()
+        }
+        const id = req.params.id;
+
+        collection.updateOne({
+                _id: ObjectID(id)
+            }, {
+                $push: {
+                    comments: comment
+                },
+            },
+            function (err, res) {
+                if (err) reject(err);
+                resolve(comment);
+            });
     });
 };
 

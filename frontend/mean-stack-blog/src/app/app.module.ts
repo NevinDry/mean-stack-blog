@@ -16,6 +16,7 @@ import { AuthIntercepter } from './services/auth/auth-intercepter';
 import { BlogListBackofficeComponent } from './components/blog/blog-list-back-office/blog-list-back-office.component';
 import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-blog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { BlogCommentsComponent } from './components/blog/blog-comments/blog-comments.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AuthComponent,
     HomeBackOfficeComponent,
     BlogListBackofficeComponent,
-    AddEditBlogComponent
+    AddEditBlogComponent,
+    BlogCommentsComponent
   ],
   imports: [
     BrowserModule,

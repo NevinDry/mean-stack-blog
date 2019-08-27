@@ -65,3 +65,14 @@ module.exports.editArticle = function (req, res, next) {
         });
 
 }
+
+module.exports.addComment = function (req, res, next) {
+    blogWorker.addComment(req, res)
+        .then((data) => {
+            next(new HttpResponses.HttpSuccess(true, 200, 'Successfully added', data));
+        })
+        .catch(err => {
+            next(new HttpResponses.HttpError("Error while adding comment", err, 500));
+        });
+
+}
