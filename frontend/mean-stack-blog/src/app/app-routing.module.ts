@@ -2,14 +2,24 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BlogListComponent } from './components/blog/blog-list/blog-list.component';
 import { BlogArticleComponent } from './components/blog/blog-article/blog-article.component';
+import { AuthComponent } from './components/auth/auth/auth.component';
+import { HomeBackOfficeComponent } from './components/backOffice/home-back-office/home-back-office.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', component: BlogListComponent },
   { path: 'blogArticle/:id', component: BlogArticleComponent },
+  { path: 'admin', component: AuthComponent },
+  {
+    path: 'backOffice', component: HomeBackOfficeComponent, canActivate: [
+      AuthGuard
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }
