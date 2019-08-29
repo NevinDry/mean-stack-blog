@@ -187,7 +187,6 @@ module.exports.editArticle = function (req, res) {
             },
             function (err, res) {
                 if (err) reject(err);
-                console.log(res);
                 resolve(id);
             });
     });

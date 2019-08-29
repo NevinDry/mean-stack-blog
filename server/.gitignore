@@ -8,6 +8,7 @@
 # dependencies
 /node_modules
 /media/uploads/blog/*
+/webAppBuild/*
 # IDEs and editors
 /.idea
 .project

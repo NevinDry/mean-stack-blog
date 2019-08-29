@@ -6,7 +6,6 @@ module.exports.login = function (req, res, next) {
       .then(function (user) {
         if (user) {
           // authentication successful
-          console.log(user);
           next(new HttpResponses.HttpSuccess(true, 200, 'Login Success', user));
         } else {
           // authentication failed

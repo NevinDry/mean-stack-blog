@@ -4,14 +4,14 @@
     db: null,
   }
   
-  exports.connect = function(url, done) {
+  exports.connect = function(url, db, done) {
     if (state.db) return done();
-  
-    MongoClient.connect(url, function(err, client) {
+
+    MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true  }, function(err, client) {
       if (err) return done(err)
-      state.db = client.db('mean-blog');
+      state.db = client.db(db);
       done();
-    })
+    });
   }
   
   exports.get = function() {

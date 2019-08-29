@@ -24,7 +24,7 @@ module.exports.getAll = function (req, res, next) {
 }
 
 module.exports.getOne = function (req, res, next) {
-    blogWorker.getOne(req.param('id'))
+    blogWorker.getOne(req.params['id'])
         .then((data) => {
             next(new HttpResponses.HttpSuccess(true, 200, 'Article found', data));
         })
@@ -34,7 +34,7 @@ module.exports.getOne = function (req, res, next) {
 }
 
 module.exports.deleteArticle = function (req, res, next) {
-    blogWorker.deleteArticle(req.param('id'))
+    blogWorker.deleteArticle(req.params['id'])
         .then((data) => {
             next(new HttpResponses.HttpSuccess(true, 200, 'Article removed', data));
         })

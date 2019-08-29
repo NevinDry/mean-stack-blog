@@ -20,7 +20,7 @@ export class BlogCommentsComponent implements OnInit {
 
   @Input('articleComments')
   set articleComments(articleComments: any) {
-    this.comments = articleComments;
+    this.comments = articleComments || [];
   }
 
   @Input('articleId')

@@ -1,6 +1,7 @@
 const app = require("./backend/app");
 const debug = require("debug");
 const http = require("http");
+var db = require('./backend/db')
 
 const normalizePort = val => {
   var port = parseInt(val, 10);
@@ -37,17 +38,27 @@ const onError = error => {
   }
 };
 
+const server = http.createServer(app);
+const port = normalizePort("3000");
+
 const onListening = () => {
   const addr = server.address();
   const bind = typeof port === "string" ? "pipe " + port : "port " + port;
   debug("Listening on " + bind);
-  console.log("Listening on " + bind);
+  console.log("Server Started, Listening on " + bind);
 };
 
-const port = normalizePort("3000");
-app.set("port", port);
-
-const server = http.createServer(app);
-server.on("error", onError);
-server.on("listening", onListening);
-server.listen(port);
+db.connect('mongodb://localhost:27017', 'mean-blog', function (err) {
+  if (err) {
+    console.log(err);
+    console.log('Unable to connect to Mongo.')
+    process.exit(1)
+  } else {
+    console.log('Mongo connected');
+    
+    app.set("port", port);
+    server.on("error", onError);
+    server.on("listening", onListening);
+    server.listen(port);
+  }
+});
