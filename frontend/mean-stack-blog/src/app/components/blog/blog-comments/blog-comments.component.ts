@@ -9,7 +9,7 @@ import { BlogService } from 'src/app/services/blog/blog.service';
 })
 export class BlogCommentsComponent implements OnInit {
 
-  private comments;
+  comments;
   showCommentForm = false;
   commentForm: FormGroup;
   submitted: boolean = false;

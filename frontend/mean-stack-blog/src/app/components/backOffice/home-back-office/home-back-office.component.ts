@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class HomeBackOfficeComponent implements OnInit {
 
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
