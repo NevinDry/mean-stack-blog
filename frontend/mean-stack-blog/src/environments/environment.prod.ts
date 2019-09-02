@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'mean-stack-blog.etiennepuissant.eu:3008'
+  apiUrl: 'http://mean-stack-blog.etiennepuissant.eu'
 };
