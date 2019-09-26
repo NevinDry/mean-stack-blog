@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "start:server": "nodemon ./server.js",
+    "serve:ssr": "node ./server/dist/server",
     "test": "jest"
   },
   "private": true,

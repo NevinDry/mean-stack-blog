@@ -31,13 +31,13 @@ import { BlogCommentsComponent } from './components/blog/blog-comments/blog-comm
     BlogCommentsComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
-    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AppRoutingModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthIntercepter, multi: true },
   ],

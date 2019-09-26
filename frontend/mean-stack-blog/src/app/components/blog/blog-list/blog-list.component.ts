@@ -46,7 +46,8 @@ export class BlogListComponent implements OnInit, OnDestroy {
         (response: any) => {
           this.loading = false;
           if (response.data && response.data.length) {
-            this.articles = this.articles.concat(response.data);
+            // If its a search, we show new list of articles, when you fetch older, you add articles to existing array
+            this.articles = this.pageIndex === 0 ? response.data : this.articles.concat(response.data);
             this.pageIndex += 3;
             this.fetchingOlder = false;
           }
