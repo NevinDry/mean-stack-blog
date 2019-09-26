@@ -24,8 +24,10 @@
               <h2 class="card-title">{{article.title}}</h2>
               <p class="card-text">{{article.preview}}</p>
   
-              <a [routerLink]="['/blogArticle', article._id]" class="btn btn-primary">Read →</a>
-              <span class="text-muted float-right">Reading time : {{article.readingTime}} min</span>
+              <a [routerLink]="['/blogArticle', article._id]" class="btn btn-primary">Lire →</a> 
+              <span class="text-muted float-right font-italic">
+                {{article.readingTime}} min reading           
+              </span>
             </div>
             <div class="card-footer text-muted">
               Posted on {{ article.date | date:'fullDate'}} by
@@ -40,13 +42,14 @@
         <!-- Search Widget -->
         <div class="card my-4">
           <h5 class="card-header">Search</h5>
-          <div class="card-body">
+          <div class="card-body blogSearchBar">
             <div class="input-group">
               <input type="text" #searchValue class="form-control" placeholder="...">
               <span class="input-group-btn">
-                <button class="btn btn-primary" (click)="searchArticles(searchValue.value)" type="button">Go!</button>
+                <button class="btn btn-primary ml-1" (click)="searchArticles(searchValue.value)" type="button">Go!</button>
               </span>
             </div>
+            <a class="searchResetLink" (click)="searchArticles('')">reset</a>
           </div>
         </div>
         <a [routerLink]="['/backOffice']" class="btn btn-info">Add article</a>

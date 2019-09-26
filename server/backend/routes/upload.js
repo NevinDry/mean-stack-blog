@@ -14,8 +14,9 @@ const storage = multer.diskStorage({
         cb(null, path);
     },
     filename: function (req, file, cb) {
-        cb(null, uuidv4() + '.jpg')
-    }
+        let ext = file.originalname.substring(file.originalname.lastIndexOf('.'), file.originalname.length);
+        cb(null, uuidv4() + ext)
+        }
 });
 
 var upload = multer({ storage: storage }).single('file');

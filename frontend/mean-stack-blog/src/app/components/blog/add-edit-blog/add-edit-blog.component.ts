@@ -26,11 +26,14 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
   config = new Config();
   articleToEdit: any = null;
   error: boolean;
+  fileError = null;
+  fileContentError = null;
   private unsubscribe: Subject<void> = new Subject();
 
   constructor(private route: ActivatedRoute, private router: Router, private formBuilder: FormBuilder, private blogService: BlogService, private authService: AuthService, private uploadService: UploadService) { }
 
-  @ViewChild("inputImage", {static: false}) inputImage;
+  @ViewChild("inputImage", { static: false }) inputImage;
+  @ViewChild("inputContentImage", { static: false }) inputContentImage;
 
   ngOnInit() {
 
@@ -41,6 +44,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
       time: ['', []],
       image: [null, []],
       imageLink: ['', Validators.required],
+      imagesContent: [[], []]
     });
 
     this.route.params.subscribe(params => {
@@ -57,6 +61,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
               this.articleForm.patchValue({ content: this.articleToEdit.content });
               this.articleForm.patchValue({ time: this.articleToEdit.readingTime });
               this.articleForm.patchValue({ imageLink: this.articleToEdit.imageLink });
+              this.articleForm.patchValue({ imagesContent: this.articleToEdit.imagesContent });
             },
             err => {
               this.error = err.error.message;
@@ -67,26 +72,50 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     });
   }
 
-  fileChangeEvent() {
+  fileChangeEvent(isContentImage: boolean) {
+    this.fileContentError = null;
     let image: File;
-    const fi = this.inputImage.nativeElement;
+    const fi = isContentImage ? this.inputContentImage.nativeElement : this.inputImage.nativeElement;
     if (fi.files && fi.files[0]) {
       image = fi.files[0];
+    }
+
+    if (image.size > 2000000) {
+      this.fileContentError = "File is too large";
+      return;
     }
 
     const formData = new FormData();
     formData.append('file', image);
 
-    this.uploadService.uploadImage(formData, 'blog').subscribe(
+    const folder = isContentImage ? 'blogArticleContent' : 'blog';
+
+    this.uploadService.uploadImage(formData, folder).subscribe(
       response => {
-        this.articleForm.patchValue({
-          imageLink: response.data
-        });
+        if (isContentImage) {
+          const imagesContent = this.articleForm.value['imagesContent'] || [];
+          imagesContent.push({ imageLink: response.data });
+          this.articleForm.patchValue({
+            imagesContent: imagesContent
+          });
+        } else {
+          this.articleForm.patchValue({
+            imageLink: response.data
+          });
+        }
       },
       error => {
         this.loading = false;
-        this.sendError = error.error.message;
+        this.fileContentError = error.error.message;
       });
+  }
+
+  removeContentImage(imageLink) {
+    const imagesContent = this.articleForm.value['imagesContent'];
+    imagesContent.splice(imagesContent.findIndex(x => x.imageLink === imageLink), 1);
+    this.articleForm.patchValue({
+      imagesContent: imagesContent
+    });
   }
 
   onSubmitArticleForm() {
@@ -106,7 +135,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             this.sendSuccess = false;
             this.preview = null;
-            this.router.navigate(['/blogArticle', response.data]);
+            this.router.navigate(['/backOffice']);
           }, 1000);
         },
         error => {
@@ -123,7 +152,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
           setTimeout(() => {
             this.sendSuccess = false;
             this.preview = null;
-            this.router.navigate(['/blogArticle', response.data]);
+            this.router.navigate(['/backOffice']);
           }, 1000);
         },
         error => {

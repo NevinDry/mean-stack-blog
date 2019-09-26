@@ -5,12 +5,15 @@
     <!-- Post Content Column -->
     <div class="col-lg-9">
 
+      <div class="article-back-button">
+        <a [routerLink]="['/blog']"><i class="fas fa-caret-left mr-1"></i>article list</a>
+      </div>
       <!-- Title -->
-      <h1 class="mt-4 text-center">{{article.title}}</h1>
+      <h1 class="mt-1 text-left">{{article.title}}</h1>
 
 
       <!-- Date/Time -->
-      <div class="d-flex justify-content-center mt-3">
+      <div class="d-flex justify-content-left mt-3">
         <div class="media text-muted">
           <img class="mr-3 authorMedia" [src]="'../../../assets/authors/'+ article.author +'.jpg'"
             alt="Generic placeholder image">

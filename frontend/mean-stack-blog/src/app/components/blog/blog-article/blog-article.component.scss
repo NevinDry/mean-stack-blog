@@ -1,3 +1,5 @@
+
+
 .authorMedia{
     width: 64px;
     height: 64px;
@@ -23,6 +25,22 @@
 .article .socialMedias a{
     color: inherit;
 }
+
+.article-back-button a i{ 
+    color: grey;
+}
+
+.article-back-button a{ 
+    color: grey;
+    font-size: 0.80rem;
+}
+
+.article-back-button a:hover{ 
+    text-decoration: underline;
+    color: black;
+    cursor: pointer;
+}
+
 
 @media (max-width: 960px) {
     .article .socialMedias{

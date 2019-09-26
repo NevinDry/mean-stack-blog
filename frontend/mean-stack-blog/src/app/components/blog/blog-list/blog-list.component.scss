@@ -14,4 +14,17 @@
  
  .card-img-top{
    height: 320px;
+   object-fit: cover;
+
  }
+
+ .blogSearchBar a {
+  color: grey;
+  font-size: 0.80rem;
+}
+
+.blogSearchBar a:hover {
+  text-decoration: underline;
+  color: grey;
+  cursor: pointer;
+}
