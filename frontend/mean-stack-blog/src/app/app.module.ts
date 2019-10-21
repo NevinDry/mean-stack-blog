@@ -31,7 +31,7 @@ import { BlogCommentsComponent } from './components/blog/blog-comments/blog-comm
     BlogCommentsComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
