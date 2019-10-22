@@ -11,7 +11,9 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --configuration dev-serv && ng run mean-stack-blog:server:production --bundleDependencies all"
+    "build:ssr:prod": "npm run build:client-and-server-bundles-prod && npm run compile:server",
+    "build:client-and-server-bundles-prod": "ng build --configuration production && ng run mean-stack-blog:server:production --bundleDependencies all",
+    "build:client-and-server-bundles": "ng build --configuration dev-serv && ng run mean-stack-blog:server:dev-serv --bundleDependencies all"
   },
   "private": true,
   "dependencies": {

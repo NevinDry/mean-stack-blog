@@ -1,6 +1,7 @@
 import { environment } from '../../environments/environment';
 
 const BACKEND_URL = environment.apiUrl;
+const CLIENT_URL = environment.clientUrl;
 
 export class Config {
 
@@ -8,6 +9,11 @@ export class Config {
   private publicImageUrl = BACKEND_URL + '/media/uploads';
   private userUrl = BACKEND_URL + '/api/user/';
   private uploadUrl = BACKEND_URL + '/api/upload/';
+
+  
+  public getClientUrl(){
+    return CLIENT_URL;
+  }
 
   public getBlogUrl(){
     return this.blogUrl;

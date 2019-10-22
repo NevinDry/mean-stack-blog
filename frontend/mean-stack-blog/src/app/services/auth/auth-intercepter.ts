@@ -10,9 +10,6 @@ import { isPlatformBrowser } from '@angular/common';
 export class AuthIntercepter implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router, @Inject(PLATFORM_ID) private platformId: Object) { }
 
-  // case insensitive check against config and value
-
-
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     if (req && req.url.includes("api")) {
       const authToken = this.authService.getToken() ? JSON.parse(this.authService.getToken()).token : null;

@@ -160,6 +160,17 @@
                 "scripts": false,
                 "styles": true
               }
+            },
+            "dev-serv": {
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.dev-serv.ts"
+              }],
+              "sourceMap": false,
+              "optimization": {
+                "scripts": false,
+                "styles": true
+              }
             }
           }
         }
