@@ -2,7 +2,7 @@
   "name": "mean-stack-blog",
   "version": "0.0.0",
   "scripts": {
-    "start:server": "nodemon ./server.js",
+    "start:server": "nodemon ./mean-stack-blog-api.js",
     "test": "jest"
   },
   "private": true,
