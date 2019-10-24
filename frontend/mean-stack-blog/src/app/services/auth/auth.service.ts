@@ -36,7 +36,6 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         map((response: any) => {
-          console.log(response);
           if (response.data && response.data.token && isPlatformBrowser(this.platformId)) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(response.data));
