@@ -77,7 +77,7 @@
               <label for="inputContentImage">Image liée à l'article</label>
               <input type="file" #inputContentImage (change)="fileChangeEvent(true)" class="form-control-file"
                 id="inputContentImage">
-              <div *ngIf="fileError" class="alert alert-danger mt-1">
+              <div *ngIf="fileContentError" class="alert alert-danger mt-1">
                 {{fileContentError}}
               </div>
               <div *ngFor="let image of this.articleForm.value['imagesContent']">
