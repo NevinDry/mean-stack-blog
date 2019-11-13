@@ -5,7 +5,8 @@ import { Article } from 'src/app/models/blog/Article';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-article',
@@ -24,7 +25,7 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
   set articleFromPreview(value: Article) {
     this.article = value;
   }
-  constructor(private blogService: BlogService, private route: ActivatedRoute) { }
+  constructor(private blogService: BlogService, private route: ActivatedRoute, private meta:Meta, private location: Location) { }
 
   ngOnInit() {
 
@@ -35,8 +36,18 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
             (response: any) => {
               this.loading = false;
               this.article = response.data;
-              if(this.article.comments){
-                this.article.comments.sort(function(a,b){return new Date(b.date).getTime() - new Date(a.date).getTime()});
+
+              //updating meta (ssr on)
+              this.meta.updateTag({ name: 'author', content: this.article.author });
+              this.meta.updateTag({ name: 'description', content: this.article.title });
+              this.meta.updateTag({ property: 'og:url', content: "http://localhost:3000/" + this.location.path() });
+              this.meta.updateTag({ property: 'og:type', content: 'article' });
+              this.meta.updateTag({ property: 'og:title', content: this.article.title });
+              this.meta.updateTag({ name: 'author', content: 'website' }); this.meta.updateTag({ property: 'og:description', content: this.article.preview });
+              this.meta.updateTag({ name: 'description', content: 'website' }); this.meta.updateTag({ property: 'og:image', content: this.config.getPublicImageUrl() + '/blog/' + this.article.imageLink });
+
+              if (this.article.comments) {
+                this.article.comments.sort(function (a, b) { return new Date(b.date).getTime() - new Date(a.date).getTime() });
               }
             },
             err => {

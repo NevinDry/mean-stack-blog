@@ -64,17 +64,17 @@
 
             <div class="form-group col-6">
 
-              <label for="inputArticle">Contenu</label>
+              <label for="inputArticle">Content</label>
               <textarea class="form-control" id="inputArticle" type="text" formControlName="content"
                 [ngClass]="{ 'is-invalid': submitted && articleForm.controls.content.errors }" rows="3"></textarea>
               <div class="invalid-feedback"
                 *ngIf="submitted && articleForm.controls.content.errors && articleForm.controls.content.errors.required">
-                Contenu requis
+                Content requis
               </div>
             </div>
 
             <div class="form-group col-6">
-              <label for="inputContentImage">Image liée à l'article</label>
+              <label for="inputContentImage">Image linked to the article</label>
               <input type="file" #inputContentImage (change)="fileChangeEvent(true)" class="form-control-file"
                 id="inputContentImage">
               <div *ngIf="fileContentError" class="alert alert-danger mt-1">
