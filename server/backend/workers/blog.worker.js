@@ -1,6 +1,7 @@
 'use strict';
 var db = require('../db');
 var ObjectID = require('mongodb').ObjectID;
+var userWorker = require('./user.worker');
 
 module.exports.getLatest = function (index, search) {
     return new Promise(function (resolve, reject) {
@@ -118,18 +119,19 @@ module.exports.deleteArticle = function (id) {
 
 
 
-module.exports.addArticle = function (req, res) {
-    return new Promise(function (resolve, reject) {
+module.exports.addArticle =  function (req, res) {
+    return new Promise(async function (resolve, reject) {
         var collection = db.get().collection('articles');
 
         const form = req.body;
+        const author = await userWorker.getAuhtorForArticle(req.user._id);
         const article = {
             title: form.title,
             preview: form.preview,
             content: form.content,
             date: new Date(),
             readingTime: form.time,
-            author: req.user.name,
+            author:  author,
             imageLink: form.imageLink,
             imagesContent: form.imagesContent,
             tags: form.tags.split(',')

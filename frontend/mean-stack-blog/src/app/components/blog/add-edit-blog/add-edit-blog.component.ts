@@ -61,7 +61,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
               this.articleForm.patchValue({ preview: this.articleToEdit.preview });
               this.articleForm.patchValue({ content: this.articleToEdit.content });
               this.articleForm.patchValue({ time: this.articleToEdit.readingTime });
-              this.articleForm.patchValue({ tags: this.articleToEdit.tags });
+              this.articleForm.patchValue({ tags: this.articleToEdit.tags.toString() });
               this.articleForm.patchValue({ imageLink: this.articleToEdit.imageLink });
               this.articleForm.patchValue({ imagesContent: this.articleToEdit.imagesContent || [] });
             },
@@ -178,7 +178,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     // sets the preview object binded to blog-article component
     this.preview = {
       title: this.articleForm.value.title,
-      author: this.authService.user.name,
+      author: this.authService.user._id,
       preview: this.articleForm.value.preview,
       content: this.articleForm.value.content,
       date: new Date(),

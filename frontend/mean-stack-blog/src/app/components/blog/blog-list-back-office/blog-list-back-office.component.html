@@ -18,17 +18,20 @@
           <th>date</th>
           <th>Edit</th>
           <th>Delete</th>
+          <th>Go to</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let article of articles">
           <td id="f1">{{article.title}}</td>
-          <td id="l1">{{article.author}}</td>
+          <td id="l1">{{article.author.name}}</td>
           <td id="m1">{{article.date | date:'dd/MM/yyyy'}}</td>
           <td><button type="button" class="update btn btn-warning btn-sm"
               [routerLink]="['/addEditArticle', article._id]"><i class="fas fa-edit"></i></button></td>
           <td><button (click)="openModal(template, article._id)" type="button" class="delete btn btn-danger btn-sm"><i
                 class="fas fa-trash-alt"></i></button></td>
+          <td><button  type="button" [routerLink]="['/blogArticle', article._id]" class="delete btn btn-primary btn-sm"><i
+             class="fas fa-arrow-circle-right"></i></button></td>
         </tr>
       </tbody>
     </table>
@@ -38,7 +41,7 @@
 <ng-template #template>
   <div class="modal-body text-center">
     <p>Are you sure you want to delete ?</p>
-    <button type="button" class="btn btn-primary m-2"  (click)="reject()">No !</button>
+    <button type="button" class="btn btn-primary m-2" (click)="reject()">No !</button>
     <button type="button" class="btn btn-danger m-2" (click)="accept()">Yes plz</button>
   </div>
 </ng-template>

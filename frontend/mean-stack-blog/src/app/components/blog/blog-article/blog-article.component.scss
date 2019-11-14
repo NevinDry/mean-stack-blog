@@ -1,61 +1,111 @@
-
-
-.authorMedia{
-    width: 64px;
-    height: 64px;
-    border-radius: 45px;
+.article .container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.article .socialMedias i{
-    font-size: 2.5rem;
+.authorMedia {
+  width: 64px;
+  height: 64px;
+  border-radius: 45px;
 }
 
-.article .socialMedias .fa-facebook-square{
-    color: #4267B2
+.media-body {
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 21px;
+  color: rgb(88, 88, 88);
+  font-style: normal;
+  font-weight: 400;
+  flex-direction: column;
+  display: flex;
 }
 
-.article .socialMedias .fa-linkedin{
-    color:#006599;
+.writing .markdown-code {
+  background: rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  word-break: break-word;
+  font-weight: 400;
+  font-family: Menlo, Monaco, "Courier New", Courier, monospace;
 }
 
-.article .socialMedias .fa-twitter-square{
-    color: #1DA1F2
+
+.socialMedias i {
+  font-size: 2.5rem;
+
 }
 
-.article .socialMedias a{
-    color: inherit;
+.socialMedias .fa-facebook-square {
+  color: #4267B2
 }
 
-.article-back-button a i{ 
-    color: grey;
+.socialMedias .fa-linkedin {
+  color: #006599;
 }
 
-.article-back-button a{ 
-    color: grey;
-    font-size: 0.80rem;
+.socialMedias .fa-twitter-square {
+  color: #1DA1F2
 }
 
-.article-back-button a:hover{ 
-    text-decoration: underline;
-    color: black;
-    cursor: pointer;
+.socialMedias a {
+  color: inherit;
 }
 
+.article-back-button a i {
+  color: grey;
+}
+
+.article-back-button a {
+  color: grey;
+  font-size: 0.80rem;
+}
+
+.article-back-button a:hover {
+  text-decoration: underline;
+  color: black;
+  cursor: pointer;
+}
+
+.writing {
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+  font-size: 21px;
+  line-height: 1.58;
+  color: rgba(0, 0, 0, 0.84);
+  font-style: normal;
+  font-weight: 400;
+}
+
+.authorSocials a{
+  color:  #666;
+  margin-right: 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.auhtorBottom{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 @media (max-width: 960px) {
-    .article .socialMedias{
-        height: inherit;
-        position: relative;
-        text-align: center;
-
-    }
+  .socialMedias {
+    height: inherit;
+    position: relative;
+    text-align: center;
   }
 
-  @media (min-width: 960px) {
-    .article .socialMedias{
-        text-align: left;
-        height: 100px;
-        position: fixed;
-        right: 0;    
-    }
+  .socialMedias i {
+    padding: 25px 50px 25px 50px;
   }
+}
+
+@media (min-width: 960px) {
+  .socialMedias {
+    right: 5px;
+    top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    position: fixed;
+    flex-direction: column;
+  }
+}
