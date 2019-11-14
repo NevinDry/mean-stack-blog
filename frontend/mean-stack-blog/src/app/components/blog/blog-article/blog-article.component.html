@@ -1,4 +1,4 @@
-<div *ngIf="article" class="article">
+<article *ngIf="article" class="article">
   <div class="container">
 
     <!-- Post Content Column -->
@@ -27,9 +27,10 @@
       <p class="lead writing">{{article.preview}}</p>
 
       <!-- Preview Image -->
-      <img class="img-fluid rounded" [src]="config.getPublicImageUrl() + '/blog/' + article.imageLink" alt="">
+   
+      <img class="article-image" [src]="config.getPublicImageUrl() + '/blog/' + article.imageLink" alt=""> 
 
-      <hr>
+
 
       <!-- Post content markdown -->
       <div class="markdown writing">
@@ -43,7 +44,7 @@
 
 
     <div class="">
-      <app-blog-article-tags [articleId]="article._id" [articleTags]="article.tags"></app-blog-article-tags>
+      <app-blog-article-tags [articleTags]="article.tags"></app-blog-article-tags>
       <hr>
 
       <!-- <app-blog-comments [articleId]="article._id" [articleComments]="article.comments"></app-blog-comments> -->
@@ -103,4 +104,4 @@
     </span>
 
   </div>
-</div>
+</article>

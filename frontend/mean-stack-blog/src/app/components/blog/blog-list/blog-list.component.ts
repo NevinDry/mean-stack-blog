@@ -20,6 +20,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
   pageIndex = 0;
   searchValue = "";
   config = new Config();
+  tags = ["web", "angular", "ssr", "javascript", "mongoDB", "mean stack"];
 
   constructor(private blogService: BlogService, @Inject(DOCUMENT) private document) { }
 
@@ -66,10 +67,18 @@ export class BlogListComponent implements OnInit, OnDestroy {
     this.getArticles();
   }
 
+  onSearchTag($event){
+    this.searchValue = $event;
+    this.pageIndex = 0;
+    this.articles = [];
+    this.getArticles();
+  }
 
   ngOnDestroy(): void {
     this.unsubscribe.next();
     this.unsubscribe.complete();
   }
+
+
 
 }

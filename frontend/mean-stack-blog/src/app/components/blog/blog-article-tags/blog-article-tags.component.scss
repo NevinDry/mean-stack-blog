@@ -6,12 +6,13 @@
 .tags li {
     list-style-type: none;
     margin-bottom: 5px;
+    cursor: pointer;
   }
   
   .tag {
     background: hsl(171, 100%, 41%);
     border-radius: 3px 0 0 3px;
-    color: white;
+    color: black;
     display: inline-block;
     height: 26px;
     line-height: 26px;

@@ -1,16 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
-body{
-    background-color:#5c9e5c1f;
-    font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
+body {
+  background-color: #5c9e5c1f;
+  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
 
 }
 
-.btn-primary{
-    background-color: hsl(204, 86%, 53%)	;
+.btn-primary {
+  background-color: #ffdd57;
+  border-color: transparent;
+  color: rgba(0, 0, 0, .7);
+
+  &:hover {
+    background-color: #ffdb4a;
+    border-color: transparent;
+    color: rgba(0, 0, 0, .7);
+  }
+
+  &:not(:disabled):not(.disabled):active {
+    background-color: #ffd83d;
+    border-color: transparent;
+    color: rgba(0, 0, 0, .7);
+  }
 }
 
-.title{
-    font-family: 'Kaushan Script', cursive;
+
+.title {
+  font-family: 'Kaushan Script', cursive;
+}
+
+pre[class*="language-"] {
+  margin-right: -15px;
+  margin-left: -15px;
+  border-radius: 0;
 }

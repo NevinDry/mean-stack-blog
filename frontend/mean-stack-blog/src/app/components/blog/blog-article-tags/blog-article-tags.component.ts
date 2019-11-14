@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-blog-article-tags',
@@ -7,7 +7,6 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BlogArticleTagsComponent implements OnInit {
   tags: any;
-  id: any;
 
   constructor() { }
 
@@ -16,9 +15,11 @@ export class BlogArticleTagsComponent implements OnInit {
     this.tags = articleTags || [];
   }
 
-  @Input('articleId')
-  set articleId(articleId: any) {
-    this.id = articleId;
+  @Output() searchTag = new EventEmitter<any>();
+
+  search(tag: string){
+    console.log("idf");
+    this.searchTag.emit(tag);
   }
 
   ngOnInit() {

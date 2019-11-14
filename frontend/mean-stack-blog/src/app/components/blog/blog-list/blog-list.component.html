@@ -27,7 +27,7 @@
             <hr>
             <div class="row">
               <div class="col-8">
-                <app-blog-article-tags [articleId]="article._id" [articleTags]="article.tags"></app-blog-article-tags>
+                <app-blog-article-tags  [articleTags]="article.tags"></app-blog-article-tags>
 
               </div>
               <div class="col-4">
@@ -62,6 +62,16 @@
           <a class="searchResetLink" (click)="searchArticles('')">reset</a>
         </div>
       </div>
+
+      <div class="card my-4">
+          <h5 class="card-header">Tags</h5>
+          <div class="card-body">
+            <div class="input-group">
+                <app-blog-article-tags (searchTag)="onSearchTag($event)" [articleTags]="tags"></app-blog-article-tags>
+            </div>
+          </div>
+        </div>
+
       <!-- <a [routerLink]="['/backOffice']" class="btn btn-info">Add article</a> -->
 
     </div>
