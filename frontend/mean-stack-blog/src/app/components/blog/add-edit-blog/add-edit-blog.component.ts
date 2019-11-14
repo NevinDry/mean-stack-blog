@@ -61,7 +61,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
               this.articleForm.patchValue({ content: this.articleToEdit.content });
               this.articleForm.patchValue({ time: this.articleToEdit.readingTime });
               this.articleForm.patchValue({ imageLink: this.articleToEdit.imageLink });
-              this.articleForm.patchValue({ imagesContent: this.articleToEdit.imagesContent });
+              this.articleForm.patchValue({ imagesContent: this.articleToEdit.imagesContent || [] });
             },
             err => {
               this.error = err.error.message;
@@ -111,7 +111,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
   }
 
   removeContentImage(imageLink) {
-    const imagesContent = this.articleForm.value['imagesContent'];
+    let imagesContent = this.articleForm.value['imagesContent'];
     imagesContent.splice(imagesContent.findIndex(x => x.imageLink === imageLink), 1);
     this.articleForm.patchValue({
       imagesContent: imagesContent

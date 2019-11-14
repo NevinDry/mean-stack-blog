@@ -24,7 +24,7 @@
               <h2 class="card-title">{{article.title}}</h2>
               <p class="card-text">{{article.preview}}</p>
   
-              <a [routerLink]="['/blogArticle', article._id]" class="btn btn-primary">Lire →</a> 
+              <a [routerLink]="['/blogArticle', article._id]" class="btn btn-primary">Read more →</a> 
               <span class="text-muted float-right font-italic">
                 {{article.readingTime}} min reading           
               </span>
@@ -52,7 +52,7 @@
             <a class="searchResetLink" (click)="searchArticles('')">reset</a>
           </div>
         </div>
-        <a [routerLink]="['/backOffice']" class="btn btn-info">Add article</a>
+        <!-- <a [routerLink]="['/backOffice']" class="btn btn-info">Add article</a> -->
 
       </div>
   
