@@ -18,6 +18,7 @@ import { BlogListBackofficeComponent } from './components/blog/blog-list-back-of
 import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-blog.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { BlogCommentsComponent } from './components/blog/blog-comments/blog-comments.component';
+import { BlogArticleTagsComponent } from './components/blog/blog-article-tags/blog-article-tags.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BlogCommentsComponent } from './components/blog/blog-comments/blog-comm
     HomeBackOfficeComponent,
     BlogListBackofficeComponent,
     AddEditBlogComponent,
-    BlogCommentsComponent
+    BlogCommentsComponent,
+    BlogArticleTagsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

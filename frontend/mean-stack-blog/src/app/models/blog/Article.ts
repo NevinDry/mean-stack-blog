@@ -5,6 +5,7 @@ export class Article {
     author: string;
     content: string;
     date: Date;
+    tags: string;
     comments?: any[];
     readingTime: number;
     preview: string;

@@ -43,6 +43,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
       content: ['', Validators.required],
       time: ['', []],
       image: [null, []],
+      tags: ['', []],
       imageLink: ['', Validators.required],
       imagesContent: [[], []]
     });
@@ -60,6 +61,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
               this.articleForm.patchValue({ preview: this.articleToEdit.preview });
               this.articleForm.patchValue({ content: this.articleToEdit.content });
               this.articleForm.patchValue({ time: this.articleToEdit.readingTime });
+              this.articleForm.patchValue({ tags: this.articleToEdit.tags });
               this.articleForm.patchValue({ imageLink: this.articleToEdit.imageLink });
               this.articleForm.patchValue({ imagesContent: this.articleToEdit.imagesContent || [] });
             },
@@ -81,7 +83,8 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
     }
 
     if (image.size > 2000000) {
-      this.fileContentError = "File is too large";
+      isContentImage ? this.fileContentError = "File is too large" : this.fileError = "File is too large";
+      
       return;
     }
 
@@ -106,7 +109,12 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
       },
       error => {
         this.loading = false;
-        this.fileContentError = error.error.message;
+        if (isContentImage) {
+          this.fileContentError = error.error.message;
+        } else {
+          this.fileError = error.error.message;
+
+        }
       });
   }
 
@@ -174,6 +182,7 @@ export class AddEditBlogComponent implements OnInit, OnDestroy {
       preview: this.articleForm.value.preview,
       content: this.articleForm.value.content,
       date: new Date(),
+      tags: this.articleForm.value.tags,
       readingTime: this.articleForm.value.time,
       imageLink: this.articleForm.value.imageLink
     }

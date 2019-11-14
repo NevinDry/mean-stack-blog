@@ -37,6 +37,9 @@
               <input class="form-control" id="inputTime" type="text" formControlName="time"
                 [ngClass]="{ 'is-invalid': submitted && articleForm.controls.time.errors }" />
 
+              <label for="inputTags">Tags</label>
+              <input class="form-control" id="inputTags" type="text" formControlName="tags"
+                [ngClass]="{ 'is-invalid': submitted && articleForm.controls.tags.errors }" />
 
             </div>
 
@@ -49,14 +52,15 @@
                 *ngIf="submitted && articleForm.controls.imageLink.errors && articleForm.controls.imageLink.errors.required">
                 Picture required
               </div>
+              <div *ngIf="fileError" class="alert alert-danger mt-1">
+                {{fileError}}
+              </div>
+              <div *ngIf="articleForm.value.imageLink" class="col-md-6 offset-md-6">
+                <img class="uploadImagePreview"
+                  [src]="config.getPublicImageUrl() + '/blog/' + articleForm.value.imageLink" />
+              </div>
             </div>
-            <div *ngIf="fileError" class="alert alert-danger mt-1">
-              {{fileError}}
-            </div>
-            <div *ngIf="articleForm.value.imageLink" class="col-md-6 offset-md-6">
-              <img class="uploadImagePreview"
-                [src]="config.getPublicImageUrl() + '/blog/' + articleForm.value.imageLink" />
-            </div>
+
 
           </div>
 

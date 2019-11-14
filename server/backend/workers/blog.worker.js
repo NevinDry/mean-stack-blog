@@ -131,7 +131,8 @@ module.exports.addArticle = function (req, res) {
             readingTime: form.time,
             author: req.user.name,
             imageLink: form.imageLink,
-            imagesContent: form.imagesContent
+            imagesContent: form.imagesContent,
+            tags: form.tags.split(',')
         }
 
 
@@ -184,7 +185,9 @@ module.exports.editArticle = function (req, res) {
                     readingTime: form.time,
                     imageLink: form.imageLink,
                     imagesContent: form.imagesContent,
-                    lastModified: new Date()
+                    lastModified: new Date(),
+                    tags: form.tags.split(',')
+
                 },
             },
             function (err, res) {
