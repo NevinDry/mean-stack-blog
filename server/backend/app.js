@@ -18,11 +18,6 @@ app.use(cors());
 
 app.use("/media", express.static('media'));
 
-app.use('/', express.static(path.join(__dirname, '/../webAppBuild')));
-
-app.get(new RegExp('^(?!\/api).*$'), function(req, res){
-  res.sendFile(path.resolve(__dirname + '/../webAppBuild/index.html'));
-});
 
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(tokenAuthCheck);

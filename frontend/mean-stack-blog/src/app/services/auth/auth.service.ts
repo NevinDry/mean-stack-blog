@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Config } from '../../config/config';
 import { throwError } from 'rxjs';
 import { User } from 'src/app/models/auth/User';
 import { catchError, map } from 'rxjs/operators';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, Inject } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
   private config = new Config();
   user: User;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {
     this.init();
   }
 
@@ -35,8 +36,7 @@ export class AuthService {
       .pipe(
         catchError(this.handleError),
         map((response: any) => {
-          console.log(response);
-          if (response.data && response.data.token) {
+          if (response.data && response.data.token && isPlatformBrowser(this.platformId)) {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('currentUser', JSON.stringify(response.data));
             this.init();
@@ -44,17 +44,21 @@ export class AuthService {
 
           return response;
         })
-        );
+      );
   }
 
   logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
-    this.user = null;
+    if (isPlatformBrowser(this.platformId)) {
+      // remove user from local storage to log user out
+      localStorage.removeItem('currentUser');
+      this.user = null;
+    }
   }
 
   getToken = function () {
-    return localStorage['currentUser'];
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage['currentUser'];
+    }
   };
 
   isLoggedIn() {
@@ -72,7 +76,7 @@ export class AuthService {
   }
 
   handleError(error) {
-   
+
     return throwError(error);
   }
 }
