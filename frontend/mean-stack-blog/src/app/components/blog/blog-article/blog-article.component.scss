@@ -23,19 +23,17 @@
 .article-image {
     margin: 10px -15px 20px -15px;
     border-radius: 0;
-    width: -webkit-fill-available;
+    width: inherit;
     height: 280px;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
 }
 
-.writing .markdown-code {
-  background: rgba(0, 0, 0, 0.05);
-  padding: 20px;
-  word-break: break-word;
-  font-weight: 400;
-  font-family: Menlo, Monaco, "Courier New", Courier, monospace;
-}
+.lead{
+  font-style: italic;
 
+  
+}
 
 .socialMedias i {
   font-size: 2.5rem;
@@ -73,14 +71,7 @@
   cursor: pointer;
 }
 
-.writing {
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
-  font-size: 21px;
-  line-height: 1.58;
-  color: rgba(0, 0, 0, 0.84);
-  font-style: normal;
-  font-weight: 400;
-}
+
 
 
 

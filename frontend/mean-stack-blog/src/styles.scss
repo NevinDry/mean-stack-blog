@@ -3,8 +3,7 @@
 
 body {
   background-color: #5c9e5c1f;
-  font-family: medium-content-serif-font, Georgia, Cambria, "Times New Roman", Times, serif;
-
+  font-family: 'Montserrat', sans-serif;
 }
 
 .btn-primary {
@@ -34,4 +33,18 @@ pre[class*="language-"] {
   margin-right: -15px;
   margin-left: -15px;
   border-radius: 0;
+}
+
+.writing {
+  p{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 21px;
+    line-height: 2;
+    color: rgba(0, 0, 0, 0.84);
+    font-weight: 400;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+
+  }
+
 }

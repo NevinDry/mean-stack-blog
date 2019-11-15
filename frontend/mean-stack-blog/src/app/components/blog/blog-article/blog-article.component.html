@@ -27,81 +27,84 @@
       <p class="lead writing">{{article.preview}}</p>
 
       <!-- Preview Image -->
-   
-      <img class="article-image" [src]="config.getPublicImageUrl() + '/blog/' + article.imageLink" alt=""> 
 
-
-
-      <!-- Post content markdown -->
-      <div class="markdown writing">
-        <markdown [data]="article.content"></markdown>
+      <div class="article-image" [ngStyle]="{'background-image':'url('+config.getPublicImageUrl() + '/blog/' + article.imageLink+')'}"> 
 
       </div>
 
-      <hr>
-
-    </div>
 
 
-    <div class="">
-      <app-blog-article-tags [articleTags]="article.tags"></app-blog-article-tags>
-      <hr>
+        <!-- Post content markdown -->
+        <div class="markdown writing">
+          <markdown [data]="article.content"></markdown>
 
-      <!-- <app-blog-comments [articleId]="article._id" [articleComments]="article.comments"></app-blog-comments> -->
-    </div>
+        </div>
 
+        <hr>
 
-    <div class="">
-
-      <h5 class="text-center">WRITTEN BY</h5>
+      </div>
 
 
-      <div class="auhtorBottom mt-3 mb-3">
+      <div class="">
+        <app-blog-article-tags [articleTags]="article.tags"></app-blog-article-tags>
+        <hr>
 
-        <div class="media text-muted">
-          <img class="mr-3 authorMedia" [src]="'../../../assets/authors/'+ article.author.name +'.jpg'"
-            alt="Generic placeholder image">
-          <div class="media-body">
-            <h4 class="mt-1 mb-0"><a href="article.author.link">{{article.author.name}}</a></h4>
-            <p>{{article.author.lead}}</p>
+        <!-- <app-blog-comments [articleId]="article._id" [articleComments]="article.comments"></app-blog-comments> -->
+      </div>
+
+
+      <div class="">
+
+        <h5 class="text-center">WRITTEN BY</h5>
+
+
+        <div class="auhtorBottom mt-3 mb-3">
+
+          <div class="media text-muted">
+            <img class="mr-3 authorMedia" [src]="'../../../assets/authors/'+ article.author.name +'.jpg'"
+              alt="Generic placeholder image">
+            <div class="media-body">
+              <h4 class="mt-1 mb-0"><a href="article.author.link">{{article.author.name}}</a></h4>
+              <p>{{article.author.lead}}</p>
+            </div>
+
+
+          </div>
+          <div class="authorSocials">
+            <a href="https://twitter.com/NevinCognac?ref_src=twsrc%5Etfw" data-show-count="false"><i
+                class="fab fa-twitter" rel="noopener"></i> NevinCognac</a>
+            <a href="https://etiennepuissant.eu" target="_blank" rel="noopener"><i
+                class="fab fa-github"></i>Nevindry</a>
+            <a href="https://github.com/NevinDry" target="_blank" rel="noopener"><i
+                class="fas fa-link"></i>etiennepuissant.eu</a>
           </div>
 
-
         </div>
-        <div class="authorSocials">
-          <a href="https://twitter.com/NevinCognac?ref_src=twsrc%5Etfw"
-            data-show-count="false"><i class="fab fa-twitter" rel="noopener"></i> NevinCognac</a>
-          <a href="https://etiennepuissant.eu" target="_blank" rel="noopener"><i
-              class="fab fa-github"></i>Nevindry</a>
-          <a href="https://github.com/NevinDry" target="_blank" rel="noopener"><i class="fas fa-link"></i>etiennepuissant.eu</a>
-        </div>
-
       </div>
     </div>
-  </div>
 
 
 
 
-  <div class=" socialMedias">
-    <span class="">
-      <!-- Facebook use page meta for his post preview -->
-      <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:4200" target="_blank"><i
-          class="fab fa-facebook-square"></i></a>
+    <div class=" socialMedias">
+      <span class="">
+        <!-- Facebook use page meta for his post preview -->
+        <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:4200" target="_blank"><i
+            class="fab fa-facebook-square"></i></a>
 
-    </span>
-    <span class="">
-      <!-- Same as facebook i guess -->
-      <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=localhost:4200/&title=' + article.title"
-        target="_blank"><i class="fab fa-linkedin"></i></a>
+      </span>
+      <span class="">
+        <!-- Same as facebook i guess -->
+        <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=localhost:4200/&title=' + article.title"
+          target="_blank"><i class="fab fa-linkedin"></i></a>
 
-    </span>
-    <span class="">
+      </span>
+      <span class="">
 
-      <a [href]="'https://twitter.com/share?url=localhost:4200/&text=' + article.title + ' by ' + article.author"
-        target="_blank"><i class="fab fa-twitter-square"></i></a>
+        <a [href]="'https://twitter.com/share?url=localhost:4200/&text=' + article.title + ' by ' + article.author"
+          target="_blank"><i class="fab fa-twitter-square"></i></a>
 
-    </span>
+      </span>
 
-  </div>
+    </div>
 </article>
