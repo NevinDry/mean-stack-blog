@@ -18,7 +18,6 @@ export class BlogArticleTagsComponent implements OnInit {
   @Output() searchTag = new EventEmitter<any>();
 
   search(tag: string){
-    console.log("idf");
     this.searchTag.emit(tag);
   }
 

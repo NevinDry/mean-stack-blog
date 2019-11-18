@@ -24,6 +24,11 @@ module.exports.getLatest = function (index, search) {
                         $regex: ".*" + search + ".*",
                         "$options": "i"
                     }
+                }, {
+                    content: {
+                        $regex: ".*" + search + ".*",
+                        "$options": "i"
+                    }
                 }]
             };
         };
@@ -119,7 +124,7 @@ module.exports.deleteArticle = function (id) {
 
 
 
-module.exports.addArticle =  function (req, res) {
+module.exports.addArticle = function (req, res) {
     return new Promise(async function (resolve, reject) {
         var collection = db.get().collection('articles');
 
@@ -131,7 +136,7 @@ module.exports.addArticle =  function (req, res) {
             content: form.content,
             date: new Date(),
             readingTime: form.time,
-            author:  author,
+            author: author,
             imageLink: form.imageLink,
             imagesContent: form.imagesContent,
             tags: form.tags.split(',')
@@ -158,12 +163,12 @@ module.exports.addComment = function (req, res) {
         const id = req.params.id;
 
         collection.updateOne({
-                _id: ObjectID(id)
-            }, {
-                $push: {
-                    comments: comment
-                },
+            _id: ObjectID(id)
+        }, {
+            $push: {
+                comments: comment
             },
+        },
             function (err, res) {
                 if (err) reject(err);
                 resolve(comment);
@@ -178,20 +183,20 @@ module.exports.editArticle = function (req, res) {
         const form = req.body;
         const id = req.params.id;
         collection.updateOne({
-                _id: ObjectID(id)
-            }, {
-                $set: {
-                    title: form.title,
-                    preview: form.preview,
-                    content: form.content,
-                    readingTime: form.time,
-                    imageLink: form.imageLink,
-                    imagesContent: form.imagesContent,
-                    lastModified: new Date(),
-                    tags: form.tags.split(',')
+            _id: ObjectID(id)
+        }, {
+            $set: {
+                title: form.title,
+                preview: form.preview,
+                content: form.content,
+                readingTime: form.time,
+                imageLink: form.imageLink,
+                imagesContent: form.imagesContent,
+                lastModified: new Date(),
+                tags: form.tags.split(',')
 
-                },
             },
+        },
             function (err, res) {
                 if (err) reject(err);
                 resolve(id);

@@ -8,11 +8,11 @@
         <a [routerLink]="['/']"><i class="fas fa-caret-left mr-1"></i>article list</a>
       </div>
       <!-- Title -->
-      <h1 class="mt-1 text-left">{{article.title}}</h1>
+      <h1 class="mt-2 text-left">{{article.title}}</h1>
 
 
       <!-- Date/Time -->
-      <div class="d-flex justify-content-left mt-3">
+      <div class="d-flex justify-content-left mt-4">
         <div class="media text-muted">
           <img class="mr-3 authorMedia" [src]="'../../../assets/authors/'+ article.author.name +'.jpg'"
             alt="Generic placeholder image">
@@ -88,20 +88,18 @@
 
     <div class=" socialMedias">
       <span class="">
-        <!-- Facebook use page meta for his post preview -->
-        <a href="https://www.facebook.com/sharer/sharer.php?u=localhost:4200" target="_blank"><i
+        <a [href]="'https://www.facebook.com/sharer/sharer.php?u=' + config.getClientUrl() + location.path()" target="_blank"><i
             class="fab fa-facebook-square"></i></a>
 
       </span>
       <span class="">
-        <!-- Same as facebook i guess -->
-        <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=localhost:4200/&title=' + article.title"
+        <a [href]="'https://www.linkedin.com/shareArticle?mini=true&url=' + config.getClientUrl() + location.path() + '/&title=' + article.title"
           target="_blank"><i class="fab fa-linkedin"></i></a>
 
       </span>
       <span class="">
 
-        <a [href]="'https://twitter.com/share?url=localhost:4200/&text=' + article.title + ' by ' + article.author"
+        <a [href]="'https://twitter.com/share?url=' + config.getClientUrl() + location.path() + '/&text=' + article.title + ' by ' + article.author.name"
           target="_blank"><i class="fab fa-twitter-square"></i></a>
 
       </span>

@@ -43,6 +43,8 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
               //updating meta (ssr on)
               this.meta.updateTag({name: 'author',content: this.article.author});
               this.meta.updateTag({name: 'description',content: this.article.title});
+              this.meta.updateTag({name: 'keywords',content: this.article.tags});
+
               this.meta.updateTag({ property: 'og:url', content: this.config.getClientUrl() + this.location.path() });
               this.meta.updateTag({ property: 'og:type', content: 'article' });
               this.meta.updateTag({ property: 'og:title', content: this.article.title });
