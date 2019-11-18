@@ -30,7 +30,6 @@ export class BlogListComponent implements OnInit, OnDestroy {
     const scrollPercent = ((window.scrollY + window.innerHeight) * 100) / document.body.offsetHeight;
     if (!this.fetchingOlder && scrollPercent > 90) {
       this.fetchingOlder = true;
-      console.log("lol");
       this.getArticles();
     }
   }
