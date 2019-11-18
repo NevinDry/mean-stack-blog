@@ -27,7 +27,7 @@
             <hr>
             <div class="row">
               <div class="col-8">
-                <app-blog-article-tags  [articleTags]="article.tags"></app-blog-article-tags>
+                <app-blog-article-tags  (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="article.tags"></app-blog-article-tags>
 
               </div>
               <div class="col-4">
@@ -67,7 +67,7 @@
           <h5 class="card-header">Tags</h5>
           <div class="card-body">
             <div class="input-group">
-                <app-blog-article-tags (searchTag)="onSearchTag($event)" [articleTags]="tags"></app-blog-article-tags>
+                <app-blog-article-tags (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="tags"></app-blog-article-tags>
             </div>
           </div>
         </div>

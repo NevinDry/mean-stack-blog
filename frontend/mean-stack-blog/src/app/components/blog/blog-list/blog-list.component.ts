@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { Config } from '../../../config/config';
 import { DOCUMENT } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-blog-list',
@@ -15,20 +16,18 @@ export class BlogListComponent implements OnInit, OnDestroy {
   private unsubscribe: Subject<void> = new Subject();
   articles: any[] = [];
   loading: boolean;
-  fetchingOlder: boolean;
+  fetchingOlder: boolean = true;
   error: boolean;
   pageIndex = 0;
   searchValue = "";
   config = new Config();
   tags = ["web", "angular", "ssr", "javascript", "mongoDB", "mean stack"];
 
-  constructor(private blogService: BlogService, @Inject(DOCUMENT) private document) { }
+  constructor(private blogService: BlogService, @Inject(DOCUMENT) private document, private route: ActivatedRoute) { }
 
   @HostListener("window:scroll", [])
   onWindowScroll() {
-
     const scrollPercent = ((window.scrollY + window.innerHeight) * 100) / document.body.offsetHeight;
-
     if (!this.fetchingOlder && scrollPercent > 90) {
       this.fetchingOlder = true;
       this.getArticles();
@@ -37,7 +36,13 @@ export class BlogListComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loading = true;
-    this.getArticles();
+    this.route.params.subscribe(params => {
+      if (params['search']) {
+        this.onSearchTag(params['search']);
+      } else {
+        this.getArticles();
+      }
+    });
   }
 
   getArticles() {
@@ -67,7 +72,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
     this.getArticles();
   }
 
-  onSearchTag($event){
+  onSearchTag($event) {
     this.searchValue = $event;
     this.pageIndex = 0;
     this.articles = [];

@@ -9,6 +9,7 @@ import { AddEditBlogComponent } from './components/blog/add-edit-blog/add-edit-b
 
 const routes: Routes = [
   { path: '', component: BlogListComponent },
+  { path: ':search', component: BlogListComponent },
   { path: 'blogArticle/:id', component: BlogArticleComponent },
   { path: 'admin', component: AuthComponent },
   {
