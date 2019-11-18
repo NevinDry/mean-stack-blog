@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog-article-tags',
@@ -7,19 +8,28 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class BlogArticleTagsComponent implements OnInit {
   tags: any;
+  isOnpage: boolean;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   @Input('articleTags')
   set articleTags(articleTags: any) {
     this.tags = articleTags || [];
   }
 
+  @Input('onPage')
+  set onPage(onPage: any) {
+    this.isOnpage = onPage;
+  }
+
   @Output() searchTag = new EventEmitter<any>();
 
   search(tag: string){
-    console.log("idf");
-    this.searchTag.emit(tag);
+    if(this.isOnpage){
+      this.searchTag.emit(tag);
+    }else{
+      this.router.navigate(['', tag]);
+    }
   }
 
   ngOnInit() {
