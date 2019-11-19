@@ -41,7 +41,7 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
               this.article = response.data;
 
               //updating meta (ssr on)
-              this.meta.updateTag({name: 'author',content: this.article.author});
+              this.meta.updateTag({name: 'author', content: this.article.author.name});
               this.meta.updateTag({name: 'description',content: this.article.title});
               this.meta.updateTag({name: 'keywords',content: this.article.tags});
 
