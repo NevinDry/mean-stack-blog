@@ -28,7 +28,7 @@ export class BlogArticleTagsComponent implements OnInit {
     if(this.isOnpage){
       this.searchTag.emit(tag);
     }else{
-      this.router.navigate(['', tag]);
+      this.router.navigate(['home', tag]);
     }
   }
 
