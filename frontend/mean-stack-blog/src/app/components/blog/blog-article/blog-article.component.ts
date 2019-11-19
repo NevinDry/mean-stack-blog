@@ -64,6 +64,9 @@ export class BlogArticleComponent implements OnInit, OnDestroy {
     }
 
   }
+  scrollTop(){
+    window.scrollTo(0, 0);
+  }
 
   ngOnDestroy() {
     this.unsubscribe.next();
