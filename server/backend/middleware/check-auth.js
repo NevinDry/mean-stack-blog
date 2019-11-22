@@ -16,6 +16,7 @@ const tokenAuthCheck = expressJwt({
         '/api/user/login',
         '/api/blog/getLatest',
         '/api/blog/getAll',
+        '/api/blog/getTags/',
         /^\/api\/blog\/getOne\/.*/
     ]
 });

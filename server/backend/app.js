@@ -28,7 +28,7 @@ app.use('/api/upload', uploadRoutes);
 app.use(responseHandler);
 
 function responseHandler(response, req, res, next) {
-  console.log("\u001b[1;34m -----------------HTTP RESPONSE-------------------");
+  // console.log("\u001b[1;34m -----------------HTTP RESPONSE-------------------");
 
   if(!response.success){
     console.log( "\u001b[1;31m  Error \u001b[0m" );
@@ -36,10 +36,10 @@ function responseHandler(response, req, res, next) {
     console.log(response);
 
   }else{
-    console.log( "\u001b[1;32m Success \u001b[0m" );
-     console.log(response);
+    // console.log( "\u001b[1;32m Success \u001b[0m" );
+    //  console.log(response);
   }
-  console.log("\u001b[1;34m --------------------------------------------------- \u001b[0m");
+  // console.log("\u001b[1;34m --------------------------------------------------- \u001b[0m");
 
 
 	return res.status(response.status).json({message: response.message, data: response.data });
