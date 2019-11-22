@@ -1,0 +1,13 @@
+.mySocials{
+    font-size: 1.6rem;
+    a i {
+      color: black;
+      padding: 15px;
+      transition: color 0.3s ease;
+     
+    }
+
+    a i:hover{
+        color: hsl(171, 100%, 41%);
+    }
+  }

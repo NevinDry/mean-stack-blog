@@ -76,3 +76,14 @@ module.exports.addComment = function (req, res, next) {
         });
 
 }
+
+module.exports.getAllTags = function (req, res, next) {
+    blogWorker.getAllTags()
+        .then((data) => {
+            next(new HttpResponses.HttpSuccess(true, 200, 'Success', data));
+        })
+        .catch(err => {
+            next(new HttpResponses.HttpError("Error while loading tags", err, 500));
+        });
+
+}

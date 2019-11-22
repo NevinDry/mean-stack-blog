@@ -60,4 +60,8 @@ export class BlogService {
         })
       );
   }
+
+  getTags(){
+    return this.http.get(this.config.getBlogUrl() + 'getTags/');
+  }
 }

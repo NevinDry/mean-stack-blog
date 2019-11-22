@@ -21,7 +21,7 @@ export class BlogListComponent implements OnInit, OnDestroy {
   pageIndex = 0;
   searchValue = "";
   config = new Config();
-  tags = ["web", "angular", "ssr", "javascript", "mongoDB", "mean stack"];
+  tags = null;
 
   constructor(private blogService: BlogService, @Inject(DOCUMENT) private document, private route: ActivatedRoute) { }
 
@@ -43,6 +43,16 @@ export class BlogListComponent implements OnInit, OnDestroy {
         this.getArticles();
       }
     });
+
+    this.blogService.getTags().pipe(takeUntil(this.unsubscribe))
+    .subscribe(
+      (response: any) => {
+        this.tags = response.data.tags;
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
   getArticles() {

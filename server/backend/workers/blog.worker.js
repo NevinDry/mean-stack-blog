@@ -203,3 +203,15 @@ module.exports.editArticle = function (req, res) {
             });
     });
 };
+
+module.exports.getAllTags = function () {
+    return new Promise(function (resolve, reject) {
+        var collection = db.get().collection('tags');
+        collection.find().toArray(function (err, docs) {
+                if (err) {
+                    reject(err);
+                }
+                resolve(docs[0]);
+            });
+    })
+};

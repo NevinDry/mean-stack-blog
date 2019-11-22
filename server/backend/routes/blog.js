@@ -8,6 +8,7 @@ var blogController = require('../controllers/blog.controller');
 router.get('/getLatest', blogController.getLatest);
 router.get('/getAll', blogController.getAll);
 router.get('/getOne/:id', blogController.getOne);
+router.get('/getTags', blogController.getAllTags);
 
 router.post('/addArticle', blogController.addArticle);
 router.post('/editArticle/:id', blogController.editArticle);

@@ -1,4 +1,11 @@
 
+  .header-gihtub {
+    position: absolute;
+    left: 0;
+    top:0;
+    z-index: 3;
+  }
+  
   .card .author {
     position: absolute;
     top: 200px;
@@ -28,3 +35,13 @@
   color: grey;
   cursor: pointer;
 }
+
+
+
+// .mySocials a .fa-linkedin {
+//   color: #0e76a8;
+// }
+
+// .mySocials a .fa-github {
+//   color: #24292e;
+// }

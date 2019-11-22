@@ -1,3 +1,7 @@
+<a class="header-gihtub" href="https://github.com/NevinDry/mean-stack-blog"><img
+    src="https://github.blog/wp-content/uploads/2008/12/forkme_left_darkblue_121621.png?resize=149%2C149"
+    class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+
 <div class="container">
 
   <div class="row">
@@ -27,7 +31,8 @@
             <hr>
             <div class="row">
               <div class="col-8">
-                <app-blog-article-tags  (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="article.tags"></app-blog-article-tags>
+                <app-blog-article-tags (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="article.tags">
+                </app-blog-article-tags>
 
               </div>
               <div class="col-4">
@@ -47,7 +52,7 @@
 
 
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4 ">
       <!-- Search Widget -->
       <div class="card my-4">
         <h5 class="card-header">Search</h5>
@@ -64,13 +69,17 @@
       </div>
 
       <div class="card my-4">
-          <h5 class="card-header">Tags</h5>
-          <div class="card-body">
-            <div class="input-group">
-                <app-blog-article-tags (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="tags"></app-blog-article-tags>
-            </div>
+        <h5 class="card-header">Tags</h5>
+        <div class="card-body">
+          <div class="input-group">
+            <app-blog-article-tags (searchTag)="onSearchTag($event)" [onPage]="true" [articleTags]="tags">
+            </app-blog-article-tags>
           </div>
         </div>
+      </div>
+
+
+
 
       <!-- <a [routerLink]="['/backOffice']" class="btn btn-info">Add article</a> -->
 

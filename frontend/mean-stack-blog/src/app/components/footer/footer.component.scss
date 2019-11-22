@@ -1,0 +1,47 @@
+.footer {
+    padding: 25px;
+    margin-top: 30px;
+    background-color: #24292e;
+    position: relative;
+    z-index: 25;
+    .sentence {
+        margin-bottom: 15px;;
+      span {
+        color: white;
+        font-size: 1.6rem;
+        font-family: 'Kaushan Script', cursive;
+      }
+  
+  
+    }
+  
+    .made-with {
+      .made-with-title {
+        text-align: center;
+        color: white;
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+
+      }
+  
+      .made-with-brands {
+        display: flex;
+        justify-content: center;
+        img {
+          height: 75px;
+        }
+      }
+    }
+  
+    .arrow-footer{
+        align-items: center;
+        display: flex;
+        justify-content: center;
+    }
+    .arrow-up {
+        cursor: pointer;
+        font-size: 4rem;
+        color: white;
+    }
+
+  }
