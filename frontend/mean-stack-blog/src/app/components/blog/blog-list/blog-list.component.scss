@@ -36,7 +36,12 @@
   cursor: pointer;
 }
 
+@media (max-width: 960px) {
+  .githubFork {
+    width: 75px;
 
+  }
+}
 
 // .mySocials a .fa-linkedin {
 //   color: #0e76a8;
