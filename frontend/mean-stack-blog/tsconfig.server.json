@@ -4,6 +4,7 @@
     "outDir": "./out-tsc/app-server"
   },
   "angularCompilerOptions": {
+    "enableIvy": false,
     "entryModule": "./src/app/app.server.module#AppServerModule"
   }
 }
