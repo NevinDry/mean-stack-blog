@@ -20,7 +20,7 @@
     "method-override": "^3.0.0",
     "multer": "^1.4.1",
     "multer-gridfs-storage": "^3.2.3",
-    "node-sass": "^4.13.1"
+    "node-sass": "^7.0.0"
   },
   "devDependencies": {
     "jest": "^24.9.0",
