@@ -32,7 +32,7 @@
     "@nguniversal/express-engine": "10.0.1",
     "@nguniversal/module-map-ngfactory-loader": "8.2.6",
     "bootstrap": "^4.5.1",
-    "express": "^4.15.2",
+    "express": "^4.17.3",
     "ngx-bootstrap": "^5.6.1",
     "ngx-captcha": "^8.0.1",
     "ngx-markdown": "^10.1.0",
